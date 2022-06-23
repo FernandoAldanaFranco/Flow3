@@ -1,0 +1,245 @@
+[
+    {
+        "id": "36ce87dd50eaed55",
+        "type": "tab",
+        "label": "Flow 3",
+        "disabled": true,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "fb81956cfcc8e965",
+        "type": "mqtt in",
+        "z": "36ce87dd50eaed55",
+        "name": "",
+        "topic": "sic/flow3/temp",
+        "qos": "2",
+        "datatype": "auto",
+        "broker": "d7fac26f5d80c7a6",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 150,
+        "y": 160,
+        "wires": [
+            [
+                "717d59f6891fe664"
+            ]
+        ]
+    },
+    {
+        "id": "717d59f6891fe664",
+        "type": "json",
+        "z": "36ce87dd50eaed55",
+        "name": "",
+        "property": "payload",
+        "action": "",
+        "pretty": false,
+        "x": 310,
+        "y": 180,
+        "wires": [
+            [
+                "064f341b45f22ed4",
+                "90638904dcaa7ea3",
+                "845e3e27d67c63ed"
+            ]
+        ]
+    },
+    {
+        "id": "064f341b45f22ed4",
+        "type": "function",
+        "z": "36ce87dd50eaed55",
+        "name": "",
+        "func": "msg.payload=msg.payload.id;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 480,
+        "y": 140,
+        "wires": [
+            [
+                "5144eb8902d834c8"
+            ]
+        ]
+    },
+    {
+        "id": "90638904dcaa7ea3",
+        "type": "function",
+        "z": "36ce87dd50eaed55",
+        "name": "",
+        "func": "msg.payload=msg.payload.temp\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 480,
+        "y": 200,
+        "wires": [
+            [
+                "b313b6555a460af6"
+            ]
+        ]
+    },
+    {
+        "id": "845e3e27d67c63ed",
+        "type": "function",
+        "z": "36ce87dd50eaed55",
+        "name": "",
+        "func": "msg.payload=msg.payload.temp;\nmsg.topic=msg.payload.id;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 480,
+        "y": 280,
+        "wires": [
+            [
+                "0c316ad3cb46c7d0"
+            ]
+        ]
+    },
+    {
+        "id": "5144eb8902d834c8",
+        "type": "ui_text",
+        "z": "36ce87dd50eaed55",
+        "group": "c05c3cbf1ab8101e",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "Nombre",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "x": 680,
+        "y": 140,
+        "wires": []
+    },
+    {
+        "id": "b313b6555a460af6",
+        "type": "ui_gauge",
+        "z": "36ce87dd50eaed55",
+        "name": "",
+        "group": "c05c3cbf1ab8101e",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "Temperatura",
+        "label": "°C",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "100",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "x": 690,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "0c316ad3cb46c7d0",
+        "type": "ui_chart",
+        "z": "36ce87dd50eaed55",
+        "name": "",
+        "group": "f0b5f33baa3dea1b",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "label": "Historico de temperaturas",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "0",
+        "ymax": "35",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "x": 730,
+        "y": 280,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "d7fac26f5d80c7a6",
+        "type": "mqtt-broker",
+        "name": "localhost",
+        "broker": "127.0.0.1",
+        "port": "1883",
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": "",
+        "willMsg": {},
+        "sessionExpiry": ""
+    },
+    {
+        "id": "c05c3cbf1ab8101e",
+        "type": "ui_group",
+        "name": "Valores actuales",
+        "tab": "b4bf3e17556d20c2",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "f0b5f33baa3dea1b",
+        "type": "ui_group",
+        "name": "Histórico",
+        "tab": "b4bf3e17556d20c2",
+        "order": 2,
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "b4bf3e17556d20c2",
+        "type": "ui_tab",
+        "name": "Flow3",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    }
+]
